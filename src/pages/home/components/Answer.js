@@ -10,6 +10,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundSize: 'cover',
         display: 'flex',
         alignItems: 'center',
+        marginBottom: 120,
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: 0,
+        },
     },
     content: {
         display: 'flex',

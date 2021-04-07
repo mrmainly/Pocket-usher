@@ -3,7 +3,8 @@ import Layout from '../../components/layout/Layout'
 import Greeting from './components/Greeting'
 import SliderMedic from './components/SliderMedic'
 import Answer from './components/Answer'
-import { Box } from '@material-ui/core'
+import SentenceScreen from './components/SentenceScreen'
+import SentenceScreenTwo from './components/SentenceScreenTwo'
 
 const homePage = () => {
     return (
@@ -11,6 +12,8 @@ const homePage = () => {
             <Greeting />
             <SliderMedic />
             <Answer />
+            <SentenceScreen />
+            <SentenceScreenTwo />
         </Layout>
     )
 }
