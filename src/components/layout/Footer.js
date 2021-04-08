@@ -1,34 +1,9 @@
-import React, { useState, } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import { Container, Grid, Paper } from '@material-ui/core';
-
-
-const useStyles = makeStyles((theme) => ({
-    cont: {
-        backgroundColor: '#094876',
-        color: "white",
-        paddingTop: 25,
-        paddingBottom: 25,
-    },
-    item: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: 'start'
-    },
-    linkItem: {
-        color: 'white'
-    },
-    informationBox: {
-        white: '50%'
-    }
-}));
+import { Container, } from '@material-ui/core';
 
 export default function Footer(props) {
-    const classNamees = useStyles()
     return (
         <footer className="footer py-8 py-md-11 border-multicolor" style={{ backgroundColor: '#094876', paddingTop: 50, paddingBottom: 50 }}>
             <Container>

@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
     AppBar,
     Toolbar,
@@ -10,7 +11,6 @@ import {
     MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
 
@@ -21,7 +21,7 @@ const headersData = [
     },
     {
         label: "О приложении",
-        href: "/maps",
+        href: "/about",
     },
     {
         label: "Блог",
@@ -70,7 +70,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-    const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+    const { header, menuButton, toolbar, drawerContainer } = useStyles();
     const history = useHistory()
 
     const [state, setState] = useState({
@@ -156,7 +156,7 @@ export default function Header() {
 
     const femmecubatorLogo = (
         <div style={{ display: 'flex', flexDirection: 'row', marginRight: 15 }}>
-            <img src={'/logoAh.png'} style={{ width: 40, height: 40, cursor: 'pointer', }} onClick={() => {
+            <img src={'/logoAh.png'} style={{ width: 40, height: 40, cursor: 'pointer', }} alt={''} onClick={() => {
                 history.push('/')
             }} />
             <Typography style={{ color: '#1B1642', marginLeft: 5, }}>POCKET<br /> MEDIC</Typography>

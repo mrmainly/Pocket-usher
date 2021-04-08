@@ -63,7 +63,7 @@ const Answer = () => {
                 <Grid container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '80%' }}>
                     {object.map((item, index) => (
                         <Grid item key={index} className={classes.card} lg={5} sm={12} md={5} xl={5} xs={12}>
-                            <img src={'/icon-check.png'} style={{ width: 50, height: 50 }} />
+                            <img src={'/icon-check.png'} style={{ width: 50, height: 50 }} alt={''} />
                             <Box>
                                 {item.description}
                             </Box>

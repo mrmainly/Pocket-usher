@@ -5,6 +5,9 @@ import SliderMedic from './components/SliderMedic'
 import Answer from './components/Answer'
 import SentenceScreen from './components/SentenceScreen'
 import SentenceScreenTwo from './components/SentenceScreenTwo'
+import SliderMorePhone from './components/SliderMorePhone'
+import MorePhoto from './components/MorePhoto'
+import HomeFooter from './components/HomeFooter'
 
 const homePage = () => {
     return (
@@ -14,6 +17,9 @@ const homePage = () => {
             <Answer />
             <SentenceScreen />
             <SentenceScreenTwo />
+            <SliderMorePhone />
+            <MorePhoto />
+            <HomeFooter />
         </Layout>
     )
 }

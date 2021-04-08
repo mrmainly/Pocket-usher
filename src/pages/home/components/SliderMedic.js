@@ -1,9 +1,9 @@
 import React from 'react'
 import Slider from "react-slick"
-import { Container, Box, Typography, Grid } from '@material-ui/core'
+import { Container, Typography, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+// import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+// import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -98,7 +98,7 @@ const SliderMedic = () => {
                                 <Typography >{item.description}</Typography>
                             </Grid>
                             <Grid item lg={8} sm={12} md={8} xl={8} xs={12}>
-                                <img src={item.img} className={classes.img} />
+                                <img src={item.img} className={classes.img} alt={''} />
                             </Grid>
                         </Grid>
                     </div>

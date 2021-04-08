@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, GridListTileBar, Typography, Button } from '@material-ui/core'
+import { Container, Box, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundImage: `url(${"/Group2.png"})`,
         backgroundRepeat: 'no-repeat',
         width: '100%',
-        height: 800,
+        height: 850,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
             backgroundImage: 'none',
             height: 800
         },
+        marginBottom: 120
     },
     content: {
         display: 'flex',
@@ -74,7 +75,7 @@ const SentenceScreenTwo = () => {
                         <Typography >Все выгодные предложения на медицинские услуги в телефоне. Все виды медицинских услуг Вашего города собраны в одном приложении. Минимум времени для поиска. Выгодно, удобно и быстро.</Typography>
                     </Grid>
                     <Grid item className={classes.contentSeconds} lg={4} sm={6} md={6} xl={6} xs={10}>
-                        <img src={'/Rectangle.png'} style={{ width: '100%', }} />
+                        <img src={'/Rectangle.png'} style={{ width: '100%', }} alt={''} />
                     </Grid>
                 </Box>
 

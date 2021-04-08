@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Box, Grid, GridListTileBar, Typography, Button } from '@material-ui/core'
+import { Container, Box, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +54,7 @@ const SentenceScreen = () => {
 
                 <Box container className={classes.content}>
                     <Grid item className={classes.contentSeconds} lg={6} sm={6} md={6} xl={6} xs={10}>
-                        <img src={'/24.png'} style={{ width: '100%', marginLeft: '-20px' }} />
+                        <img src={'/24.png'} style={{ width: '100%', marginLeft: '-20px' }} alt={''} />
                     </Grid>
                     <Grid item className={classes.contentSeconds} lg={4} sm={6} md={6} xl={4} xs={10}>
                         <Typography variant="h4">Важно контролировать прием лекарств</Typography>
