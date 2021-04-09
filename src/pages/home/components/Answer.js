@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundImage: `url(${"/BackgroundBlue.png"})`,
+        backgroundImage: `url(${"/image/Element/BackgroundBlue.png"})`,
         backgroundRepeat: 'no-repeat',
         height: 600,
         backgroundSize: 'cover',
@@ -27,6 +27,11 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 15,
         display: 'flex',
         flexDirection: 'row',
+    },
+    title: {
+        [theme.breakpoints.down('sm')]: {
+            textAlign: 'center'
+        },
     }
 }));
 
@@ -58,12 +63,12 @@ const Answer = () => {
         <div className={classes.root}>
             <Container className={classes.content}>
                 <Box>
-                    <Typography variant="h4">С помощью <span style={{ fontFamily: 'serif', fontWeight: 'bold' }}>Pocket medic</span> Вы можете:</Typography>
+                    <Typography variant="h4" className={classes.title}>С помощью <span style={{ fontFamily: 'serif', fontWeight: 'bold' }}>Pocket medic</span> Вы можете:</Typography>
                 </Box>
                 <Grid container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '80%' }}>
                     {object.map((item, index) => (
                         <Grid item key={index} className={classes.card} lg={5} sm={12} md={5} xl={5} xs={12}>
-                            <img src={'/icon-check.png'} style={{ width: 50, height: 50 }} alt={''} />
+                            <img src={'/image/Element/icon-check.png'} style={{ width: 50, height: 50 }} alt={''} />
                             <Box>
                                 {item.description}
                             </Box>

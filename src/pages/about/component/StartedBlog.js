@@ -5,11 +5,15 @@ import ButtonCustom from '../../../components/ButtonCustom'
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundImage: `url(${"/Elenent_fon.png"})`,
+        backgroundImage: `url(${"/image/Element/Elenent_fon.png"})`,
         backgroundRepeat: 'no0repeat',
         backgroundSize: 'cover',
         height: 600,
         marginBottom: 200,
+        [theme.breakpoints.down('sm')]: {
+            marginTop: 0,
+            marginBottom: 0
+        },
     },
     content: {
         display: 'flex',
@@ -40,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    title_box: {
+
     }
 
 }));
@@ -51,7 +58,7 @@ const StartedBlog = () => {
             <Container>
                 <Grid container className={classes.content}>
                     <Grid item lg={4} sm={11} md={4} xl={4} xs={11}>
-                        <Typography variant="h3"><span style={{ fontFamily: 'serif' }}>Pocket medic</span> - все,что нужно<br /> для здоровья.</Typography>
+                        <Typography variant="h3"><span style={{ fontFamily: 'serif' }} className={classes} >Pocket medic</span> - все,что нужно<br /> для здоровья.</Typography>
                         <Box className={classes.text_box}>
                             <Typography>Не знаете где посмотреть акции на платные медицинские услуги и как экономить?</Typography>
                             <Box className={classes.button_box}>
@@ -61,7 +68,7 @@ const StartedBlog = () => {
                         </Box>
                     </Grid>
                     <Grid item lg={6} sm={11} md={4} xl={6} xs={11} className={classes.img_box}>
-                        <img src={'/Group409.png'} alt={''} style={{ width: '100%' }} />
+                        <img src={'/image/Group/Group409.png'} alt={''} style={{ width: '100%' }} />
                     </Grid>
                 </Grid>
             </Container>

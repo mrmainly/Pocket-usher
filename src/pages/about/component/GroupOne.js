@@ -4,20 +4,20 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundImage: `url(${"/image/Group/Group2.png"})`,
+        backgroundImage: `url(${"/image/Element/Rectangle177.png"})`,
         backgroundRepeat: 'no-repeat',
         width: '100%',
-        height: 850,
+        height: 600,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundPosition: 'center',
         [theme.breakpoints.down('sm')]: {
-            backgroundImage: 'none',
             height: 800,
-            marginBottom: 0
+            backgroundImage: `none`,
+            backgroundPosition: 'center',
         },
-        marginBottom: 120
+        marginBottom: 180
     },
     content: {
         display: 'flex',
@@ -30,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
         },
     },
     contentSeconds: {
-        marginLeft: 150,
-        textAlign: 'center',
+        textAlign: 'start',
         display: ' flex',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
         [theme.breakpoints.down('sm')]: {
-            marginLeft: 0
+            marginLeft: 0,
+            textAlign: 'center',
         },
     },
     textBolck: {
@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     },
     contentFirst: {
         marginLeft: '-120px',
-        marginTop: '-300px',
         textAlign: 'center',
         display: ' flex',
         justifyContent: 'center',
@@ -64,19 +63,20 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const SentenceScreenTwo = () => {
+const SentenceAbout = () => {
     const classes = useStyles()
     return (
         <div className={classes.container}>
             <Container >
 
                 <Box container className={classes.content}>
-                    <Grid item className={classes.contentFirst} lg={4} sm={6} md={6} xl={4} xs={10}>
-                        <Typography variant="h4" style={{ marginBottom: 30 }}>Сэкономьте деньги, не выходя из дома и без долгих поисков</Typography>
-                        <Typography >Все выгодные предложения на медицинские услуги в телефоне. Все виды медицинских услуг Вашего города собраны в одном приложении. Минимум времени для поиска. Выгодно, удобно и быстро.</Typography>
+                    <Grid item className={classes.contentFirst} lg={6} sm={6} md={6} xl={6} xs={10}>
+                        <img src={'/image/Group/Group420.png'} style={{ width: '100%', marginLeft: '-20px' }} alt={''} />
                     </Grid>
-                    <Grid item className={classes.contentSeconds} lg={4} sm={6} md={6} xl={4} xs={10}>
-                        <img src={'/image/Element/Rectangle.png'} style={{ width: '100%', }} alt={''} />
+                    <Grid item className={classes.contentSeconds} lg={4} sm={7} md={6} xl={4} xs={10}>
+                        <Typography variant="h4">Все выгодные акции в одном приложении</Typography>
+                        <Typography style={{ marginTop: 30 }}>Pocket medic позволит соблюдать регулярный прием лекарств и избегать рисков, которые могут наступить, если выпить неправильную дозу или пропустить прием.</Typography>
+                        <Typography style={{ marginTop: 30 }}>Мы тесно сотрудничаем с клиниками и медицинскими учреждениями, чтобы предлагать для Вас выгодные условия.</Typography>
                     </Grid>
                 </Box>
 
@@ -85,4 +85,4 @@ const SentenceScreenTwo = () => {
     )
 }
 
-export default SentenceScreenTwo
+export default SentenceAbout

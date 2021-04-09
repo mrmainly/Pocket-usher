@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             marginLeft: 0,
             marginTop: 20,
-
+            marginBottom: 150
         },
         [theme.breakpoints.up('xl')]: {
             marginLeft: '17%'
@@ -71,17 +71,17 @@ const SliderMedic = () => {
 
     const object = [
         {
-            img: '/SliderPhoto.png',
+            img: '/image/Element/SliderPhoto.png',
             description: 'это мобильное приложение, с помощью которого вы сможете улучшить менеджмент лекарств всей своей семьи.',
             title: 'Pocket Medic'
         },
         {
-            img: '/SliderPhoto.png',
+            img: '/image/Element/SliderPhoto.png',
             description: ' позволяет сэкономить не только деньги, но и время на поиски скидок/акций на медицинские услуги в Вашем городе. Регулируйте прием лекарств.',
             title: 'Pocket Medic'
         },
         {
-            img: '/SliderPhoto.png',
+            img: '/SliderPimage/Element/hoto.png',
             description: ' Больше не нужно тратить время на долгие поиски акций и скидок на медицинские услуги. Все собрано в одном месте.Только проверенные медицинские учреждения- партнеры.',
             title: 'Pocket Medic'
         },

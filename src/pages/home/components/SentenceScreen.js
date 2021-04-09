@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundImage: `url(${"/Group.png"})`,
+        backgroundImage: `url(${"/image/Group/Group.png"})`,
         backgroundRepeat: 'no-repeat',
         width: '100%',
         height: 600,
@@ -54,7 +54,7 @@ const SentenceScreen = () => {
 
                 <Box container className={classes.content}>
                     <Grid item className={classes.contentSeconds} lg={6} sm={6} md={6} xl={6} xs={10}>
-                        <img src={'/24.png'} style={{ width: '100%', marginLeft: '-20px' }} alt={''} />
+                        <img src={'/image/Element/24.png'} style={{ width: '100%', marginLeft: '-20px' }} alt={''} />
                     </Grid>
                     <Grid item className={classes.contentSeconds} lg={4} sm={6} md={6} xl={4} xs={10}>
                         <Typography variant="h4">Важно контролировать прием лекарств</Typography>

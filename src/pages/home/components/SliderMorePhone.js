@@ -35,32 +35,32 @@ const SliderMorePhone = () => {
     const [slidesToShow, setSlidesToShow] = useState()
     const object = [
         {
-            img: '/screen1.png',
+            img: '/image/Screen/screen1.png',
             description: 'Загрузка приложения бесплатная. Установи приложение прямо сейчас.',
             title: 'Pocket Medic'
         },
         {
-            img: '/screen2.png',
+            img: '/image/Screen/screen2.png',
             description: ' Загрузка приложения бесплатная. Установи приложение прямо сейчас.',
             title: 'Pocket Medic'
         },
         {
-            img: '/screen4.png',
+            img: '/image/Screen/screen4.png',
             description: ' Загрузка приложения бесплатная. Установи приложение прямо сейчас.',
             title: 'Pocket Medic'
         },
         {
-            img: '/screen5.png',
+            img: '/image/Screen/screen5.png',
             description: ' Загрузка приложения бесплатная. Установи приложение прямо сейчас.',
             title: 'Pocket Medic'
         },
         {
-            img: '/screen6.png',
+            img: '/image/Screen/screen6.png',
             description: ' Загрузка приложения бесплатная. Установи приложение прямо сейчас.',
             title: 'Pocket Medic'
         },
         {
-            img: '/screen1.png',
+            img: '/image/Screen/screen1.png',
             description: ' Загрузка приложения бесплатная. Установи приложение прямо сейчас.',
             title: 'Pocket Medic'
         },

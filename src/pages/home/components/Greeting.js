@@ -3,7 +3,7 @@ import { Box, Typography, Grid, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import ButtonCustom from '../../../components/ButtonCustom';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -12,7 +12,12 @@ const useStyles = makeStyles(() => ({
         background: "rgba(234, 251, 255, 0.91)",
         width: '100%',
         height: 600,
-        color: 'black'
+        color: 'black',
+        [theme.breakpoints.down('sm')]: {
+            height: 400,
+            paddingBottom: 30,
+            paddingTop: 30
+        },
     },
 }));
 
