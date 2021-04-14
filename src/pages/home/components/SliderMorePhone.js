@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Container, Grid, Typography, } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from 'react-slick'
+import ButtonCustom from '../../../components/ButtonCustom'
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundImage: `url(${"/fonSlider.png"})`,
+        backgroundImage: `url(${"/image/Element/fonSlider.png"})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         width: '100%',
@@ -15,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         margin: 'auto',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     img: {
         width: 300,
@@ -26,11 +27,16 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    title_block: {
+        marginTop: 20,
+        marginBottom: 20,
+        textAlign: 'center',
     }
 }));
 
 
-const SliderMorePhone = () => {
+const SliderMorePhone = ({ title }) => {
     const classes = useStyles()
     const [slidesToShow, setSlidesToShow] = useState()
     const object = [
@@ -89,9 +95,9 @@ const SliderMorePhone = () => {
     })
     return (
         <div className={classes.container}>
-            <Container>
-                <Grid>
-                    <Typography variant="h4"> Возьми под контроль свое здоровье прямо сейчас.</Typography>
+            <Container >
+                <Grid className={classes.title_block}>
+                    <Typography variant="h4"> {title}</Typography>
                 </Grid>
                 <div className="flickity-items-fade" >
                     <Slider {...settings}>
@@ -104,6 +110,7 @@ const SliderMorePhone = () => {
                                     <p className="font-size-sm text-center text-white-80 mb-0">
                                         {item.description}
                                     </p>
+                                    <ButtonCustom text={"Скачать приложении"} />
                                 </div>
                             </div>
                         ))

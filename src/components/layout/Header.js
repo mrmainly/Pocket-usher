@@ -25,15 +25,15 @@ const headersData = [
     },
     {
         label: "Блог",
-        href: "/faq",
+        href: "/blog",
     },
     {
-        label: "Свяязаться с нами ",
-        href: "/faq",
+        label: "Связаться с нами ",
+        href: "/contacts",
     },
     {
         label: "Команда",
-        href: "/faq",
+        href: "/team",
     },
 ];
 

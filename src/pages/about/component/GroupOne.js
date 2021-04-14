@@ -13,11 +13,16 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         backgroundPosition: 'center',
         [theme.breakpoints.down('sm')]: {
-            height: 800,
+            height: 600,
             backgroundImage: `none`,
             backgroundPosition: 'center',
+            marginTop: 160
         },
-        marginBottom: 180
+        [theme.breakpoints.down('xs')]: {
+            marginTop: 30,
+            marginBottom: 300
+        },
+        marginBottom: 230
     },
     content: {
         display: 'flex',

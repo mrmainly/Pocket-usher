@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: 200,
         [theme.breakpoints.down('sm')]: {
             marginTop: 0,
-            marginBottom: 0
+            marginBottom: 0,
+            paddinTop: 30
         },
     },
     content: {

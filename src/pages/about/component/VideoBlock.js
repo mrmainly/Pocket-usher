@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         [theme.breakpoints.down('sm')]: {
-            marginTop: 300
+            marginTop: 300,
         },
     },
     btn: {

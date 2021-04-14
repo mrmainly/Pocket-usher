@@ -17,7 +17,7 @@ const homePage = () => {
             <Answer />
             <SentenceScreen />
             <SentenceScreenTwo />
-            <SliderMorePhone />
+            <SliderMorePhone title={"Возьми под контроль свое здоровье прямо сейчас."} />
             <MorePhoto />
             <HomeFooter />
         </Layout>
