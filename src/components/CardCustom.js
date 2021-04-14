@@ -1,48 +1,40 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import ButtonCustom from './ButtonCustom'
 
 const useStyles = makeStyles({
     root: {
-        minWidth: 275,
+        maxWidth: 250,
     },
-    bullet: {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)',
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
+    media: {
+        height: 140,
     },
 });
 
-export default function OutlinedCard({ variant, price, list, buttonText }) {
+export default function CardCustom({ img, title, description }) {
     const classes = useStyles();
-    const bull = <span className={classes.bullet}>•</span>;
 
     return (
-        <Card className={classes.root} variant="outlined">
-            <CardContent>
-                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    {variant}
-                </Typography>
-                <Typography variant="h5" component="h2">
-                    {price}
-                </Typography>
-                <Typography>
-                    {list}
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <ButtonCustom text={buttonText} />
-            </CardActions>
+        <Card className={classes.root}>
+            <CardActionArea>
+                <CardMedia
+                    className={classes.media}
+                    image={img}
+                    title="Contemplative Reptile"
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {description}
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
         </Card>
     );
 }

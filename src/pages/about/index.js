@@ -7,7 +7,6 @@ import VideoBlock from './component/VideoBlock'
 import AnswerGroup from './component/AnswerGroup'
 import PriceBlock from './component/PriceBlock'
 import { makeStyles } from '@material-ui/core/styles';
-import SliderMorePhone from '../home/components/SliderMorePhone'
 
 const useStyles = makeStyles((theme) => ({
     container: {
