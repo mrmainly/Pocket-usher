@@ -14,7 +14,10 @@ const useStyles = makeStyles({
         borderTopLeftRadius: 20,
         borderEndEndRadius: 20,
         marginTop: 30,
-        margin: '0 auto'
+        margin: '0 auto',
+        '&:focus': {
+            outline: "none",
+        },
     },
     media: {
         height: 320,
@@ -26,21 +29,19 @@ export default function CardTeam({ img, title, description }) {
 
     return (
         <Card className={classes.root}>
-            <CardActionArea>
-                <CardMedia
-                    className={classes.media}
-                    image={img}
-                    title="Contemplative Reptile"
-                />
-                <CardContent style={{ marginTop: '-95px' }}>
-                    <Typography variant="body2" component="p">
-                        {title}
-                    </Typography>
-                    <Typography variant="body2" component="p">
-                        {description}
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
+            <CardMedia
+                className={classes.media}
+                image={img}
+                title="Contemplative Reptile"
+            />
+            <CardContent style={{ marginTop: '-95px' }}>
+                <Typography variant="body2" component="p">
+                    {title}
+                </Typography>
+                <Typography variant="body2" component="p">
+                    {description}
+                </Typography>
+            </CardContent>
         </Card>
     );
 }
