@@ -47,7 +47,7 @@ const SliderMedic = () => {
             <Slider {...settings} >
                 {object.map((item, index) => (
                     <div key={index} >
-                        <Grid container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <Grid  container style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <img src={item.img} className={classes.img} alt={''} />
                         </Grid>
                     </div>

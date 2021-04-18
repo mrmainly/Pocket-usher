@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Typography, Box, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import CardCustom from '../../../components/CardCustom'
+import CardTeam from '../../../components/card/CardTeam'
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -24,28 +24,44 @@ const DreamTeam = () => {
 
     const object = [
         {
-            img: '/image/Element/Frame17.png',
+            img: '/image/Element/TeamPhoto1.png',
+            title: 'Титов Михаил',
+            description: 'Founder, CVO'
         },
         {
-            img: '/image/Element/Group22.png',
+            img: '/image/Element/TeamPhoto2.png',
+            title: 'Белостоцкий-Капгер Авигдор',
+            description: 'CEO, team lead'
         },
         {
-            img: '/image/Element/Frame19.png',
+            img: '/image/Element/TeamPhoto3.png',
+            title: 'Айталина Лукавина',
+            description: 'Project manager, marketer'
         },
         {
-            img: '/image/Element/Frame21.png',
+            img: '/image/Element/TeamPhoto4.png',
+            title: 'Виктор Павлов',
+            description: 'CTO, Full stack developer'
         },
         {
-            img: '/image/Element/Frame22.png',
+            img: '/image/Element/TeamPhoto5.png',
+            title: 'Виктория Стасюлевич',
+            description: 'Chief Design Officer'
         },
         {
-            img: '/image/Element/Frame23.png',
+            img: '/image/Element/TeamPhoto6.png',
+            title: 'Ульяна Семенова',
+            description: 'SEO, SMM'
         },
         {
-            img: '/image/Element/Frame24.png',
+            img: '/image/Element/TeamPhoto7.png',
+            title: 'Андрей Аммосов',
+            description: 'Frontend developer'
         },
         {
-            img: '/image/Element/Frame25.png',
+            img: '/image/Element/TeamPhoto8.png',
+            title: 'Слава Скосырский',
+            description: 'Frontend developer'
         },
     ]
 
@@ -58,7 +74,7 @@ const DreamTeam = () => {
             <Grid container className={classes.content}>
                 {object.map((item, index) => (
                     <Grid item key={index} lg={3} sm={6} md={4} xl={3} xs={12}>
-                        <img src={item.img} style={{ width: '100%' }} />
+                        <CardTeam img={item.img} title={item.title} description={item.description} />
                     </Grid>
                 ))
                 }

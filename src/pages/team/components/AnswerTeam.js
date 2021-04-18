@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
         paddingTop: 120,
         [theme.breakpoints.down('sm')]: {
             flexDirection: 'column',
+            paddingTop: 50,
+            paddingBottom: 50,
         },
         color: 'black'
     },

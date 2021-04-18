@@ -2,8 +2,8 @@ import React from 'react'
 import Slider from "react-slick"
 import { Container, Typography, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles';
-// import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-// import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 const useStyles = makeStyles((theme) => ({
     card: {
@@ -57,6 +57,44 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const NextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+        <div className={className} onClick={onClick} style={{
+            ...style,
+            height: 60,
+            width: 60,
+            position: "absolute",
+            top: '50%',
+            display: 'flex',
+            justifyContent: "center",
+            alignItems: "center",
+            right: 0,
+            backgroundColor: '#22A2FF'
+        }} />
+
+    )
+}
+const PrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+        <div className={className} onClick={onClick} style={{
+            ...style,
+            height: 60,
+            width: 60,
+            position: "absolute",
+            display: 'flex',
+            justifyContent: "center",
+            alignItems: "center",
+            top: '50%',
+            left: 0,
+            zIndex: 15,
+            backgroundColor: '#22A2FF',
+
+        }} />
+
+    )
+}
 const SliderMedic = () => {
     const classes = useStyles()
     const settings = {
@@ -67,6 +105,8 @@ const SliderMedic = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     };
 
     const object = [
@@ -81,7 +121,7 @@ const SliderMedic = () => {
             title: 'Pocket Medic'
         },
         {
-            img: '/SliderPimage/Element/hoto.png',
+            img: '/image/Element/SliderPhoto.png',
             description: ' Больше не нужно тратить время на долгие поиски акций и скидок на медицинские услуги. Все собрано в одном месте.Только проверенные медицинские учреждения- партнеры.',
             title: 'Pocket Medic'
         },

@@ -9,15 +9,19 @@ import { CardActions, Button } from '@material-ui/core';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 280,
-
+        maxWidth: 240,
+        backgroundColor: '#EAF5FF',
+        borderTopLeftRadius: 20,
+        borderEndEndRadius: 20,
+        marginTop: 30,
+        margin: '0 auto'
     },
     media: {
-        height: 180,
+        height: 320,
     },
 });
 
-export default function CardCustom({ img, title, description }) {
+export default function CardTeam({ img, title, description }) {
     const classes = useStyles();
 
     return (
@@ -28,17 +32,14 @@ export default function CardCustom({ img, title, description }) {
                     image={img}
                     title="Contemplative Reptile"
                 />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                <CardContent style={{ marginTop: '-95px' }}>
+                    <Typography variant="body2" component="p">
                         {title}
                     </Typography>
                     <Typography variant="body2" component="p">
                         {description}
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button variant="text" color="primary">Перейти</Button>
-                </CardActions>
             </CardActionArea>
         </Card>
     );
