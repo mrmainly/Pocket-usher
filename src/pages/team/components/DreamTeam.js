@@ -10,12 +10,13 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         color: 'white',
         textAlign: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginTop: 70
     },
     content: {
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     }
 }))
 
@@ -67,8 +68,8 @@ const DreamTeam = () => {
 
     return (
         <Container className={classes.container}>
-            <Grid>
-                <Typography variant="h3">Dream Team</Typography>
+            <Grid >
+                <Typography variant="h3" style={{ color: 'black', fontFamily: 'serif', fontWeight: 'bold' }}>Dream Team</Typography>
                 <Typography style={{ color: '#8D9AAE' }}>Команда ООО “Мондино Технолоджес”</Typography>
             </Grid>
             <Grid container className={classes.content}>

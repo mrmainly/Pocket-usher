@@ -12,27 +12,40 @@ import MediaCardBox from './components/MediaCardBox'
 
 const useStyles = makeStyles((theme) => ({
     container: {
-        backgroundImage: `url(${"/image/Element/Rectangle300.png"})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        paddingTop: 100,
+        backgroundImage: `url(${"/image/Element/background.png"})`,
+        backgroundSize: 'cover'
     },
+    answerContainer: {
+        backgroundImage: `url(${"/image/Element/asd.png"})`,
+        backgroundSize: 'cover',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    MediaContainer: {
+        backgroundSize: 'cover',
+        backgroundImage: `url(${"/image/Element/fg.png"})`
+    }
 }));
 
 const Team = () => {
     const classes = useStyles()
     return (
         <Layout>
-            <FirstBlog />
             <div className={classes.container}>
+                <FirstBlog />
                 <SliderTeam />
-                <DreamTeam />
-                <AnswerTeam />
-                <div style={{ backgroundColor: '#F3F8FF', }}>
-                    <MapTeam />
-                    <MediaCardBox />
-                </div>
             </div>
+            <DreamTeam />
+            <div className={classes.answerContainer}>
+                <AnswerTeam />
+            </div>
+
+            <MapTeam />
+            <div className={classes.MediaContainer}>
+                <MediaCardBox />
+            </div>
+
 
         </Layout>
     )

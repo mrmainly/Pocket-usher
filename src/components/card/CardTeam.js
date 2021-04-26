@@ -38,7 +38,7 @@ export default function CardTeam({ img, title, description }) {
                 <Typography variant="body2" component="p">
                     {title}
                 </Typography>
-                <Typography variant="body2" component="p">
+                <Typography variant="body2" component="p" style={{ color: '#22A2FF' }}>
                     {description}
                 </Typography>
             </CardContent>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Typography, Grid, Card, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ButtonCustom from '../../../components/ButtonCustom';
+import CardAbout from '../../../components/card/CardAbout'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,32 +21,31 @@ const useStyles = makeStyles((theme) => ({
     title: {
         marginBottom: 30
     },
-    btn: {
-        color: 'white',
-        background: "#22A2FF",
-        border: 0,
-        height: 48,
-        padding: '0 20px',
-        boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
-        marginTop: 25,
-        borderTopRightRadius: 15,
-        borderEndStartRadius: 15,
-        '&:focus': {
-            outline: "none",
-        },
-        fontSize: 14,
-        marginLeft: 12,
-        position: 'absolute',
-    },
     content: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'column'
+
     }
 }));
 
 const PriceBlock = () => {
+    const object = [
+        {
+            description: ['Акции на мед.услуги %', 'Таблетница', 'Поиск лекарств', 'Нароминание'],
+            buttonText: "Скачать сейчас",
+            price: '0 руб',
+            status: 'Free',
+            elem: false
+        },
+        {
+            description: ['Таблетница', 'Поиск лекарств', 'Нароминание', 'Добавить мед друга', 'Больше выгоды на Акции%'],
+            buttonText: "Узнать подробнее",
+            price: '199 руб.в мес',
+            status: 'Подписка',
+            elem: true
+        },
+    ]
 
     const classes = useStyles()
     return (
@@ -56,23 +56,12 @@ const PriceBlock = () => {
                 <Typography >Мы создали мобильное приложение, которое поможет вам найти выгодные предложения на медицинские услуги, а также контролировать прием лекарств.</Typography>
             </Grid>
             <Grid container>
-                <Grid item sm={6} md={6} xl={6} xs={12} className={classes.content}>
+                {object.map((item, index) => (
+                    <Grid key={index} item sm={12} md={6} xl={6} xs={12} className={classes.content}>
+                        <CardAbout price={item.price} status={item.status} description={item.description} buttonText={item.buttonText} elem={item.elem} />
+                    </Grid>
+                ))}
 
-                    <img src={"./image/Group/Group88.png"} style={{ width: '100%' }} />
-
-                    <Button className={classes.btn} variant="contained">
-                        Скачать сейчас
-                    </Button>
-
-                </Grid>
-                <Grid item sm={6} md={6} xl={6} xs={12} className={classes.content}>
-                    <img src={"./image/Group/Group826.png"} style={{ width: '100%' }} />
-
-                    <Button className={classes.btn} variant="contained">
-                        Узнать подробнее
-                    </Button>
-
-                </Grid>
             </Grid>
         </Container >
     )

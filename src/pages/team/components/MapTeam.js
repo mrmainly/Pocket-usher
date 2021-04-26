@@ -18,11 +18,14 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('md')]: {
             marginLeft: 0
         },
+        paddingLeft: 30
     },
     Box: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    textContent: {
     }
 
 }))
@@ -32,7 +35,7 @@ const MapTeam = () => {
     return (
         <Container className={classes.container}>
             <Grid container className={classes.content}>
-                <Grid item lg={4} sm={10} md={6} xl={4} xs={10}>
+                <Grid item lg={4} sm={10} md={6} xl={4} xs={10} className={classes.textContent}>
                     <Typography variant="h4">
                         Медицинская<br /> ИТ-компания
                         </Typography>

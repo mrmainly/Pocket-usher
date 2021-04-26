@@ -39,7 +39,11 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 50,
-
+        backgroundColor: 'white',
+        paddingTop: 40,
+        paddingBottom: 40,
+        borderRadius: 25,
+        width: '90%'
     }
 }));
 
