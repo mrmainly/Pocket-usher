@@ -13,14 +13,16 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             marginTop: 0,
             marginBottom: 0,
-            paddinTop: 30
         },
     },
     content: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: 50,
+        },
     },
     img_box: {
         marginTop: 95,

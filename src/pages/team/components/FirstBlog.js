@@ -81,7 +81,7 @@ const FirstBlog = () => {
         {
             description: 'человек в команде',
             number: '12',
-            show: false
+            show: false, 
         },
     ]
     return (

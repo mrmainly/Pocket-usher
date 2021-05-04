@@ -50,7 +50,7 @@ const MorePhoto = () => {
                 <Grid item className={classes.img3} lg={8} sm={11} md={8} xl={8} xs={11}>
                     <img src={'/image/Group/Group823.png'} style={{ width: '100%' }} alt={''} />
                 </Grid>
-                <Grid item className={classes.img4} sm={11} md={6} xl={6} xs={11}>
+                <Grid item className={classes.img4} lg={6} sm={11} md={6} xl={6} xs={11}>
                     <img src={'/image/Group/Group201.png'} style={{ width: '100%' }} alt={''} />
                 </Grid>
             </Grid>

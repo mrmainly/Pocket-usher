@@ -10,7 +10,7 @@ import { CardActions, Button } from '@material-ui/core';
 const useStyles = makeStyles({
     root: {
         maxWidth: 280,
-
+        marginTop: 20
     },
     media: {
         height: 180,

@@ -114,11 +114,11 @@ export default function Header() {
                 <IconButton
                     {...{
                         edge: "start",
-                        color: "#1B1642",
                         "aria-label": "menu",
                         "aria-haspopup": "true",
                         onClick: handleDrawerOpen,
                     }}
+                    style={{ color: '#1B1642' }}
                 >
                     <MenuIcon />
                 </IconButton>
@@ -143,10 +143,10 @@ export default function Header() {
                     {...{
                         component: RouterLink,
                         to: href,
-                        color: "#1B1642",
                         style: { textDecoration: "none", },
                         key: label,
                     }}
+                    style={{ color: '#1B1642' }}
                 >
                     <MenuItem>{label}</MenuItem>
                 </Link>
@@ -170,11 +170,11 @@ export default function Header() {
                 <Button
                     {...{
                         key: label,
-                        color: "#1B1642",
                         to: href,
                         component: RouterLink,
                         className: menuButton,
                     }}
+                    style={{ color: '#1B1642' }}
                 >
                     {label}
                 </Button>

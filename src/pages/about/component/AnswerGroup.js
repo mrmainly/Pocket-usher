@@ -38,13 +38,22 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 15,
         display: 'flex',
         flexDirection: 'row',
+        [theme.breakpoints.down('sm')]: {
+            color: 'white'
+        },
     },
     title: {
         marginTop: '-50px',
         marginBottom: 80,
         [theme.breakpoints.down('sm')]: {
             textAlign: 'center',
-            marginBottom: 30
+            marginBottom: 30,
+            color: 'white'
+        },
+    },
+    box_title: {
+        [theme.breakpoints.down('sm')]: {
+            color: 'white'
         },
     }
 }));
@@ -91,7 +100,7 @@ const SentenceAbout = () => {
                             <Grid item key={index} className={classes.card} lg={3} sm={12} md={5} xl={3} xs={12}>
                                 <img src={'/image/Element/Urgent-mail3.png'} style={{ width: 50, height: 50 }} alt={''} />
                                 <Box>
-                                    <Typography variant="h5">{item.title}</Typography>
+                                    <Typography variant="h5" className={classes.box_title}>{item.title}</Typography>
                                     {item.description}
                                 </Box>
                             </Grid>
