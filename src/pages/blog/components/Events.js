@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         marginTop: 150,
         [theme.breakpoints.down('sm')]: {
-            textAlign: 'center'
+            textAlign: 'center',
+            marginBottom: '-120px'
         },
     },
     con: {

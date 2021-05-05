@@ -10,8 +10,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: "rgba(234, 251, 255, 0.91)",
-        width: '100%',
         height: 600,
         color: 'black',
         [theme.breakpoints.down('sm')]: {
@@ -20,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
             paddingTop: 30
         },
     },
-
 }));
 
 const FirstBlog = () => {
