@@ -46,11 +46,9 @@ const useStyles = makeStyles((theme) => ({
     button_box: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop: 25
     },
-    title_box: {
-
-    }
 
 }));
 

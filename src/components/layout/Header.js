@@ -28,8 +28,8 @@ const headersData = [
         href: "/blog",
     },
     {
-        label: "Связаться с нами ",
-        href: "/contacts",
+        label: "Взаимодействия",
+        href: "/interactions",
     },
     {
         label: "Команда",

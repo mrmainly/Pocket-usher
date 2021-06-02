@@ -70,7 +70,8 @@ const NextArrow = (props) => {
             justifyContent: "center",
             alignItems: "center",
             right: 0,
-            backgroundColor: '#22A2FF'
+            backgroundColor: '#22A2FF',
+            
         }} />
 
     )
