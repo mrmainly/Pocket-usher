@@ -20,10 +20,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ButtonCustom = ({ text }) => {
+const ButtonCustom = ({ text, onClick }) => {
     const classes = useStyles()
     return (
-        <Button variant="contained" className={classes.btn}>
+        <Button variant="contained" className={classes.btn} onClick={onClick}>
             {text}
         </Button>
     )

@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import Layout from '../../components/layout/Layout'
 import ButtonCustom from '../../components/ButtonCustom'
-import reducer from '../../reducer/index'
+import SimpleModal from '../../components/SimpleModal'
 
 const useClasses = makeStyles(theme => ({
     content: {
@@ -118,7 +118,7 @@ const Interactions = () => {
     const classes = useClasses()
     let [idCounter, setIdCounter] = useState(1)
     const [effect, setEffect] = useState('нету эффектов')
-    const [show, setShow] = useState(false)
+    const [showModal, setShowModal] = useState(false)
     const [inputs, setInputs] = useState([
         {
             text: 'Введите лекарство',
@@ -177,7 +177,7 @@ const Interactions = () => {
                     if (compare.effect !== 'not effect') {
                         return `${compare.mnn_1}(${compare.drug_1}) и ${compare.mnn_2} (${compare.drug_2}) взаимодействуют: ${Object.values(compare.effect)} \n`
                     } else {
-
+                        setShowModal(true)
                     }
                 })
                 setEffect(result)
@@ -224,6 +224,9 @@ const Interactions = () => {
                         </Grid>
                     </Box>
                 </Container>
+                <Box style={{ margin: '0 auto' }}>
+                    <SimpleModal showModal={showModal} setShowModal={setShowModal} />
+                </Box>
             </div>
         </Layout >
     );
