@@ -1,6 +1,7 @@
 import React, { useReducer, useState, useEffect } from 'react';
 import { Box, TextField, Typography, Container, Grid, Button, TextareaAutosize } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
 import axios from 'axios'
 
 import Layout from '../../components/layout/Layout'
@@ -119,6 +120,7 @@ const Interactions = () => {
     let [idCounter, setIdCounter] = useState(1)
     const [effect, setEffect] = useState('нету эффектов')
     const [showModal, setShowModal] = useState(false)
+    let history = useHistory();
     const [inputs, setInputs] = useState([
         {
             text: 'Введите лекарство',
@@ -194,7 +196,7 @@ const Interactions = () => {
                     <Box className={classes.content}>
                         <Box className={classes.titleBox}>
                             <Typography variant="h5">Проверка взаимодействия лекарственных средств</Typography>
-                            <ButtonCustom text="Вопрос ответ" />
+                            <ButtonCustom text="Вопрос ответ" onClick={() => { history.push("/faq") }} />
                         </Box>
                         <Grid container className={classes.interactionBox}>
                             <Grid item lg={6} sm={12} md={6} xl={6} xs={12} className={classes.activePart}>

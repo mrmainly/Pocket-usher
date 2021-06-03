@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Slider from 'react-slick'
 import ButtonCustom from './ButtonCustom'
+import { Box } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
     slide: {
@@ -31,6 +32,9 @@ const useStyles = makeStyles((theme) => ({
     text__blog: {
         width: '60rem',
         fontSize: 45
+    },
+    btnBox: {
+
     }
 
 }));
@@ -116,12 +120,9 @@ const CaruselCustom = () => {
                     <div className={classes.center}>
                         <img src={item.img} alt="..." className={item.id == imageIndex ? classes.imageActive : classes.image} />
                         <div className={classes.text__blog}>
-                            <h6 className="text-uppercase text-white">
-                            </h6>
                             <p>
                                 {item.description}
                             </p>
-                            <ButtonCustom text={"Скачать приложении"} style={{ fontSize: 50 }} />
                         </div>
                     </div>
                 </div>

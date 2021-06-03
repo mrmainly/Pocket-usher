@@ -33,13 +33,11 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         marginTop: '-100px',
+        margin: '0 auto',
         [theme.breakpoints.down('sm')]: {
             marginLeft: 0,
             marginTop: 20,
             marginBottom: 150
-        },
-        [theme.breakpoints.up('xl')]: {
-            marginLeft: '17%'
         },
     },
     img: {
@@ -71,7 +69,7 @@ const NextArrow = (props) => {
             alignItems: "center",
             right: 0,
             backgroundColor: '#22A2FF',
-            
+
         }} />
 
     )
@@ -106,8 +104,6 @@ const SliderMedic = () => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PrevArrow />,
     };
 
     const object = [
