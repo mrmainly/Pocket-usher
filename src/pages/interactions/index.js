@@ -1,9 +1,11 @@
-import * as React from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
 import { Box, TextField, Typography, Container, Grid, Button, TextareaAutosize } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios'
 
 import Layout from '../../components/layout/Layout'
 import ButtonCustom from '../../components/ButtonCustom'
+import reducer from '../../reducer/index'
 
 const useClasses = makeStyles(theme => ({
     content: {
@@ -114,6 +116,77 @@ const useClasses = makeStyles(theme => ({
 
 const Interactions = () => {
     const classes = useClasses()
+    let [idCounter, setIdCounter] = useState(1)
+    const [effect, setEffect] = useState('нету эффектов')
+    const [show, setShow] = useState(false)
+    const [inputs, setInputs] = useState([
+        {
+            text: 'Введите лекарство',
+            value: '',
+            id: 0,
+            modal: false,
+            filteredStates: [],
+            close: false,
+        },
+        {
+            text: 'Введите лекарство',
+            value: '',
+            id: 1,
+            modal: false,
+            filteredStates: [],
+            close: false,
+        },
+    ])
+    const handleText = id => e => {
+        let input = [...inputs]
+        input[id].value = e.target.value
+        setInputs(
+            input
+        )
+    }
+    const addInput = async (e) => {
+        setIdCounter(idCounter += 1)
+        let newInput = inputs.concat({
+            text: 'Введите лекарство',
+            value: '',
+            id: idCounter,
+            modal: false,
+            filteredStates: [],
+            close: true,
+        })
+        setInputs(newInput)
+    }
+    const handleDelete = i => {
+        setIdCounter(idCounter - 1)
+        let removableInput = [
+            ...inputs.slice(0, i),
+            ...inputs.slice(i + 1)
+        ]
+        setInputs(removableInput)
+    }
+    const compareInteractions = () => {
+        let getParams = ''
+        inputs.map(({ value }) => {
+            getParams = getParams + `test_case=${value}&`
+        })
+        axios
+            .get(`https://pocketmedic.online/compare/drugs_1?` + getParams)
+            .then(response => {
+                const compares = response.data
+                let result = compares.map((compare) => {
+                    if (compare.effect !== 'not effect') {
+                        return `${compare.mnn_1}(${compare.drug_1}) и ${compare.mnn_2} (${compare.drug_2}) взаимодействуют: ${Object.values(compare.effect)} \n`
+                    } else {
+
+                    }
+                })
+                setEffect(result)
+                console.log(compares)
+                console.log(effect)
+            }).catch((error) => {
+                console.log('error', error)
+            })
+    }
     return (
         <Layout>
             <div className={classes.container}>
@@ -127,14 +200,16 @@ const Interactions = () => {
                             <Grid item lg={6} sm={12} md={6} xl={6} xs={12} className={classes.activePart}>
                                 <Typography variant="body2">Международное непатентованное наименование (МНН)</Typography>
                                 <Box className={classes.activePart__inputBox}>
-                                    <Box className={classes.activePart__inputBox_item}>
-                                        <TextField id="outlined-basic" label="Введите лекарство" variant="outlined" className={classes.activePart__input} />
-                                        <Button variant="contained" className={classes.activePart__cancelButton}>x</Button>
-                                    </Box>
+                                    {inputs.map((item, index) => (
+                                        <Box className={classes.activePart__inputBox_item} key={index}>
+                                            <TextField id="outlined-basic" label="Введите лекарство" variant="outlined" className={classes.activePart__input} value={item.value} onChange={handleText(item.id)} />
+                                            <Button variant="contained" className={classes.activePart__cancelButton} onClick={() => { handleDelete(item.id) }}>x</Button>
+                                        </Box>
+                                    ))}
                                 </Box>
                                 <Box className={classes.activePart__ButtonBox}>
-                                    <Button variant="contained" className={classes.activePart__Button}>Добавить лекастрва</Button>
-                                    <Button variant="contained" className={classes.activePart__Button}>Посмотреть совместимости</Button>
+                                    <Button variant="contained" className={classes.activePart__Button} onClick={() => { addInput() }}>Добавить лекастрва</Button>
+                                    <Button variant="contained" className={classes.activePart__Button} onClick={() => { compareInteractions() }}>Посмотреть совместимости</Button>
                                 </Box>
                             </Grid>
                             <Grid item lg={6} sm={12} md={6} xl={6} xs={12} className={classes.TextAreaBox}>
@@ -143,6 +218,7 @@ const Interactions = () => {
                                     rowsMin={25}
                                     aria-label="maximum height"
                                     className={classes.textArea}
+                                    value={effect}
                                 />
                             </Grid>
                         </Grid>
