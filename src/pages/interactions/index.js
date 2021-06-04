@@ -169,22 +169,22 @@ const Interactions = () => {
     const compareInteractions = () => {
         let getParams = ''
         inputs.map(({ value }) => {
-            getParams = getParams + `test_case=${value}&`
+            getParams = getParams + `test_case_1=${value}&`
         })
+        console.log(getParams)
         axios
-            .get(`https://pocketmedic.online/compare/drugs_1?` + getParams)
+            .get(`https://pocketmedic.online/compare/drugs_mnn?` + getParams)
             .then(response => {
                 const compares = response.data
                 let result = compares.map((compare) => {
                     if (compare.effect !== 'not effect') {
-                        return `${compare.mnn_1}(${compare.drug_1}) и ${compare.mnn_2} (${compare.drug_2}) взаимодействуют: ${Object.values(compare.effect)} \n`
+                        return `${compare.mnn_1} и ${compare.mnn_2} взаимодействуют: ${Object.values(compare.effect)} \n`
                     } else {
                         setShowModal(true)
                     }
                 })
                 setEffect(result)
                 console.log(compares)
-                console.log(effect)
             }).catch((error) => {
                 console.log('error', error)
             })

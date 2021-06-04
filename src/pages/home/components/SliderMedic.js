@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
             marginTop: 20,
             marginBottom: 150
         },
+        overflow: 'hidden'
     },
     img: {
         width: '100%',

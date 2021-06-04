@@ -5,6 +5,7 @@ import Team from './pages/team/index'
 import Blog from './pages/blog/index'
 import Interactions from './pages/interactions/index'
 import Faq from './pages/faq/index'
+import Auth from './pages/auth/index'
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/blog" component={Blog} />
         <Route path="/faq" component={Faq} />
         <Route path="/interactions" component={Interactions} />
+        <Route path="/auth" component={Auth} />
       </Switch>
     </Router>
   );

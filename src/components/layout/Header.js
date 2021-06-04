@@ -9,10 +9,12 @@ import {
     Drawer,
     Link,
     MenuItem,
+    Box
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import { Link as RouterLink } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
+import ButtonCustom from '../ButtonCustom'
 
 const headersData = [
     {
@@ -36,7 +38,6 @@ const headersData = [
         href: "/team",
     },
 ];
-
 const useStyles = makeStyles(() => ({
     header: {
         backgroundColor: "white",
@@ -63,7 +64,6 @@ const useStyles = makeStyles(() => ({
     },
     drawerContainer: {
         padding: "20px 30px",
-        backgroundColor: '#252525',
         color: '#1B1642',
         height: '100%'
     },
@@ -91,26 +91,22 @@ export default function Header() {
 
         window.addEventListener("resize", () => setResponsiveness());
     }, []);
-
     const displayDesktop = () => {
         return (
             <Toolbar className={toolbar}>
                 {femmecubatorLogo}
                 <div>{getMenuButtons()}</div>
+                <Box style={{ marginLeft: 15 }}>{ButtonAuth()}</Box>
             </Toolbar>
         );
     };
-
     const displayMobile = () => {
         const handleDrawerOpen = () =>
             setState((prevState) => ({ ...prevState, drawerOpen: true }));
         const handleDrawerClose = () =>
             setState((prevState) => ({ ...prevState, drawerOpen: false }));
-
         return (
             <Toolbar style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
-
-
                 <IconButton
                     {...{
                         edge: "start",
@@ -130,12 +126,11 @@ export default function Header() {
                         onClose: handleDrawerClose,
                     }}
                 >
-                    <div className={drawerContainer}>{getDrawerChoices()}</div>
+                    <div className={drawerContainer}>{getDrawerChoices()} {ButtonAuth()}</div>
                 </Drawer>
             </Toolbar>
         );
     };
-
     const getDrawerChoices = () => {
         return headersData.map(({ label, href }) => {
             return (
@@ -153,7 +148,9 @@ export default function Header() {
             );
         });
     };
-
+    const ButtonAuth = () => {
+        return <Box ><ButtonCustom text="Вход" onClick={() => { history.push('/auth') }} /></Box>
+    }
     const femmecubatorLogo = (
         <div style={{ display: 'flex', flexDirection: 'row', marginRight: 15 }}>
             <img src={'/image/Element/logoAh.png'} style={{ width: 40, height: 40, cursor: 'pointer', }} alt={''} onClick={() => {
@@ -163,7 +160,6 @@ export default function Header() {
 
         </div>
     );
-
     const getMenuButtons = () => {
         return headersData.map(({ label, href }) => {
             return (
@@ -181,7 +177,6 @@ export default function Header() {
             );
         });
     };
-
     return (
         <header>
             <AppBar className={header} position="static">
