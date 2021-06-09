@@ -9,7 +9,7 @@ export const HeaderScreen = ({ marginTop, marginBottom }) => {
         <ScreenWrapper marginTop={marginTop} marginBottom={marginBottom}>
             <PageHeader name={'рубрика'}
                 title={'"Вопрос - Ответ"'}
-                description={'Здесь мы решили написать ответы на популярные вопросы, связанные с работой сервиса и темой карт.'} />
+                description={'Здесь мы решили написать ответы на популярные вопросы, связанные с работой сервиса'} />
             <YellowSeparator />
         </ScreenWrapper>
     );

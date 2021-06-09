@@ -2,6 +2,7 @@ import React, { useReducer, useState, useEffect } from 'react';
 import { Box, TextField, Typography, Container, Grid, Button, TextareaAutosize } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios'
 
 import Layout from '../../components/layout/Layout'
@@ -117,9 +118,11 @@ const useClasses = makeStyles(theme => ({
 
 const Interactions = () => {
     const classes = useClasses()
+    const [value, setValue] = React.useState(null);
     let [idCounter, setIdCounter] = useState(1)
     const [effect, setEffect] = useState('нету эффектов')
     const [showModal, setShowModal] = useState(false)
+    const [AutoCompliteList, setAutoComplite] = useState([])
     let history = useHistory();
     const [inputs, setInputs] = useState([
         {
@@ -139,6 +142,13 @@ const Interactions = () => {
             close: false,
         },
     ])
+    const defaultProps = {
+        options: AutoCompliteList,
+        getOptionLabel: (option) => option.title,
+    };
+    const flatProps = {
+        options: AutoCompliteList.map((option) => option.title),
+    };
     const handleText = id => e => {
         let input = [...inputs]
         input[id].value = e.target.value
@@ -189,6 +199,19 @@ const Interactions = () => {
                 console.log('error', error)
             })
     }
+    useEffect(() => {
+        searchAutoComplite()
+    }, [])
+    const searchAutoComplite = (value) => {
+        let searchGetParameter = value
+        axios
+            .get(`https://pocketmedic.online/compare/drugs_search?drug=` + searchGetParameter)
+            .then(response => {
+                const compares = response.data.drug_main_name
+                console.log('auto', compares)
+                // setAutoComplite(Object.values(compares))
+            })
+    }
     return (
         <Layout>
             <div className={classes.container}>
@@ -204,7 +227,9 @@ const Interactions = () => {
                                 <Box className={classes.activePart__inputBox}>
                                     {inputs.map((item, index) => (
                                         <Box className={classes.activePart__inputBox_item} key={index}>
+
                                             <TextField id="outlined-basic" label="Введите лекарство" variant="outlined" className={classes.activePart__input} value={item.value} onChange={handleText(item.id)} />
+
                                             <Button variant="contained" className={classes.activePart__cancelButton} onClick={() => { handleDelete(item.id) }}>x</Button>
                                         </Box>
                                     ))}
