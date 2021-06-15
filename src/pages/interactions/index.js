@@ -1,5 +1,5 @@
 import React, { useReducer, useState, useEffect } from 'react';
-import { Box, TextField, Typography, Container, Grid, Button, TextareaAutosize } from "@material-ui/core";
+import { Box, TextField, Typography, Container, Grid, Button, TextareaAutosize, colors } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -113,7 +113,7 @@ const useClasses = makeStyles(theme => ({
             flexDirection: 'column',
             marginTop: 20,
         },
-    }
+    },
 }))
 
 const Interactions = () => {
@@ -123,6 +123,7 @@ const Interactions = () => {
     const [effect, setEffect] = useState('нету эффектов')
     const [showModal, setShowModal] = useState(false)
     const [AutoCompliteList, setAutoComplite] = useState([])
+    const [color, setColor] = useState()
     let history = useHistory();
     const [inputs, setInputs] = useState([
         {
@@ -188,13 +189,14 @@ const Interactions = () => {
                 const compares = response.data
                 let result = compares.map((compare) => {
                     if (compare.effect !== 'not effect') {
-                        return `${compare.mnn_1} и ${compare.mnn_2} взаимодействуют: ${Object.values(compare.effect)} \n`
+                        setColor(Object.values(compare.color))
+                        return `${compare.drug_1} и ${compare.drug_2} взаимодействуют: ${Object.values(compare.effect)} \n`
                     } else {
                         setShowModal(true)
                     }
                 })
                 setEffect(result)
-                console.log(compares)
+                console.log('color', compares)
             }).catch((error) => {
                 console.log('error', error)
             })
@@ -240,7 +242,9 @@ const Interactions = () => {
                                 </Box>
                             </Grid>
                             <Grid item lg={6} sm={12} md={6} xl={6} xs={12} className={classes.TextAreaBox}>
-                                <Typography variant="body2">Взаимодействие</Typography>
+                                <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: 10 }}>
+                                    <Typography variant="body2">Взаимодействие:</Typography>{color ? <Box style={{ backgroundColor: `${color}`, width: 15, height: 20, marginLeft: 10, border: '1px solid black' }}></Box> : ''}
+                                </Box>
                                 <TextareaAutosize
                                     rowsMin={25}
                                     aria-label="maximum height"
