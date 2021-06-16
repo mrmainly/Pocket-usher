@@ -114,17 +114,57 @@ const useClasses = makeStyles(theme => ({
             marginTop: 20,
         },
     },
+    interactionsContent: {
+        display: 'flex',
+        width: '100%',
+        height: 300,
+        border: '1px solid black',
+        paddingTop: 10,
+        flexDirection: 'column',
+        overflow: 'auto',
+
+    },
+    InfoBlock: {
+        padding: 20,
+        borderRadius: 10,
+        backgroundColor: '#f0f0f0',
+        width: '100%',
+        minHeight: 300,
+        marginTop: 10
+    },
+    InfoBlock_Content: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'start',
+        flexDirection: 'column'
+    },
+    InfoBlock_Item: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 5,
+        borderTop: '1px solid #b9b9b9',
+        width: '100%',
+    },
+    InfoBLock_label: {
+        width: 100,
+        marginRight: 5,
+    }
 }))
 
 const Interactions = () => {
+    let history = useHistory();
     const classes = useClasses()
-    const [value, setValue] = React.useState(null);
+
     let [idCounter, setIdCounter] = useState(1)
-    const [effect, setEffect] = useState('нету эффектов')
+    const [effect, setEffect] = useState([])
+    const [mnn1, setMnn1] = useState('')
+    const [mnn2, setMnn2] = useState('')
+    const [color, setColor] = useState()
     const [showModal, setShowModal] = useState(false)
     const [AutoCompliteList, setAutoComplite] = useState([])
-    const [color, setColor] = useState()
-    let history = useHistory();
+    const spanCustom = document.createElement('span')
+    spanCustom.innerHTML = ""
+
     const [inputs, setInputs] = useState([
         {
             text: 'Введите лекарство',
@@ -187,16 +227,18 @@ const Interactions = () => {
             .get(`https://pocketmedic.online/compare/drugs_mnn?` + getParams)
             .then(response => {
                 const compares = response.data
-                let result = compares.map((compare) => {
+                compares.map((compare) => {
                     if (compare.effect !== 'not effect') {
-                        setColor(Object.values(compare.color))
-                        return `${compare.drug_1} и ${compare.drug_2} взаимодействуют: ${Object.values(compare.effect)} \n`
+                        // setColor(Object.values(compare.color))
+                        // return `${compare.drug_1} и ${compare.drug_2} взаимодействуют: ${Object.values(compare.effect)} \n`
+                        // setMnn2(compare.drug_2)
+                        // setMnn1(compare.drug_1)
+                        // setEffect(Object.values(compare.effect))
+                        setEffect(response.data)
                     } else {
                         setShowModal(true)
                     }
                 })
-                setEffect(result)
-                console.log('color', compares)
             }).catch((error) => {
                 console.log('error', error)
             })
@@ -204,6 +246,28 @@ const Interactions = () => {
     useEffect(() => {
         searchAutoComplite()
     }, [])
+    const arrayInfoDrug = [
+        {
+            label: 'Высокое',
+            value: 'Высоко клинически значимый эффект. Избегайте комбинаций; риск взаимодействия перевешивает выгоду.',
+            color: 'red'
+        },
+        {
+            label: 'Умеренное',
+            value: 'Умеренно клинически значимый эффект. Обычно избегайте комбинаций; использовать его только при особых обстоятельствах.',
+            color: 'yellow'
+        },
+        {
+            label: 'Минимальное',
+            value: 'Минимально клинически значимый эффект. Минимизировать риск; оценить риск и рассмотреть альтернативный препарат, предпринять шаги, чтобы избежать риска взаимодействия и / или разработать план мониторинга.',
+            color: 'green'
+        },
+        {
+            label: 'Неизвестно',
+            value: 'Информация о взаимодействии недоступна.',
+            color: 'grey'
+        },
+    ]
     const searchAutoComplite = (value) => {
         let searchGetParameter = value
         axios
@@ -243,20 +307,37 @@ const Interactions = () => {
                             </Grid>
                             <Grid item lg={6} sm={12} md={6} xl={6} xs={12} className={classes.TextAreaBox}>
                                 <Box style={{ display: 'flex', flexDirection: 'row', marginBottom: 10 }}>
-                                    <Typography variant="body2">Взаимодействие:</Typography>{color ? <Box style={{ backgroundColor: `${color}`, width: 15, height: 20, marginLeft: 10, border: '1px solid black' }}></Box> : ''}
+                                    <Typography variant="body2">Взаимодействие:</Typography>
                                 </Box>
-                                <TextareaAutosize
-                                    rowsMin={25}
-                                    aria-label="maximum height"
-                                    className={classes.textArea}
-                                    value={effect}
-                                />
+                                <Box className={classes.interactionsContent}>
+                                    {/* <Box>{effect !== 'нету эффектов' ? mnn1 + ' и ' + mnn2 + ' взаимодействуют: ' : ''} {effect !== 'нету эффектов' ? colorBox() : ''}{effect}</Box> */}
+
+                                    {effect ? effect.map((item, index) => (
+                                        <div key={index}>
+                                            <span style={{ fontWeight: 'bold' }}>{item.drug_1}</span> и <span style={{ fontWeight: 'bold' }}>{item.drug_2}</span> взаимодействуют: <span style={{ backgroundColor: `${Object.values(item.color)}`, width: 15, height: 20, margin: 5, border: '1px solid black', color: `${Object.values(item.color)}` }}>az</span> {Object.values(item.effect)}
+                                        </div>
+                                    )) : 'нету эффектов'}
+                                </Box>
+                                <Box className={classes.InfoBlock}>
+                                    <Typography variant="body1">Классификация взаимодействия с лекарствами</Typography>
+                                    <Typography variant="body2">Эти классификации являются лишь ориентировочными. Уместность взаимодействия конкретных лекарств сложно определить для конкретного человека. Всегда консультируйтесь со своим врачом перед началом или завершением приема каких-либо лекарств. </Typography>
+                                    <Box className={classes.InfoBlock_Content}>
+                                        {arrayInfoDrug.map((item, index) => (
+                                            <Box className={classes.InfoBlock_Item} key={index}>
+                                                <Box style={{ display: 'flex', flexDirection: 'row', alignItems: 'start', justifyContent: 'center' }}><Typography variant="body2" className={classes.InfoBLock_label}>{item.label}</Typography><Box style={{ height: 8, backgroundColor: `${item.color}`, width: 8, marginTop: 7, marginRight: 10 }}></Box></Box>
+                                                <Typography variant="boddy2" className={classes.InfoBLock_value}>{item.value}</Typography>
+                                            </Box>
+                                        ))}
+                                    </Box>
+                                </Box>
                             </Grid>
                         </Grid>
                     </Box>
+
                 </Container>
                 <Box style={{ margin: '0 auto' }}>
                     <SimpleModal showModal={showModal} setShowModal={setShowModal} />
+
                 </Box>
             </div>
         </Layout >
