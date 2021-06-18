@@ -163,7 +163,6 @@ const Interactions = () => {
     const [showModal, setShowModal] = useState(false)
     const [AutoCompliteList, setAutoComplite] = useState([])
     const spanCustom = document.createElement('span')
-    spanCustom.innerHTML = ""
 
     const [inputs, setInputs] = useState([
         {
@@ -183,16 +182,17 @@ const Interactions = () => {
             close: false,
         },
     ])
-    const defaultProps = {
-        options: AutoCompliteList,
-        getOptionLabel: (option) => option.title,
-    };
-    const flatProps = {
-        options: AutoCompliteList.map((option) => option.title),
-    };
     const handleText = id => e => {
         let input = [...inputs]
         input[id].value = e.target.value
+        searchAutoComplite(e.target.value)
+        setInputs(
+            input
+        )
+    }
+    const handleAutoComplite = (id, newInputValue) => {
+        let input = [...inputs]
+        input[id].value = newInputValue
         setInputs(
             input
         )
@@ -234,6 +234,7 @@ const Interactions = () => {
                         // setMnn2(compare.drug_2)
                         // setMnn1(compare.drug_1)
                         // setEffect(Object.values(compare.effect))
+                        console.log(response.data)
                         setEffect(response.data)
                     } else {
                         setShowModal(true)
@@ -243,9 +244,6 @@ const Interactions = () => {
                 console.log('error', error)
             })
     }
-    useEffect(() => {
-        searchAutoComplite()
-    }, [])
     const arrayInfoDrug = [
         {
             label: 'Высокое',
@@ -265,18 +263,17 @@ const Interactions = () => {
         {
             label: 'Неизвестно',
             value: 'Информация о взаимодействии недоступна.',
-            color: 'grey'
+            color: 'gray'
         },
     ]
-    const searchAutoComplite = (value) => {
-        let searchGetParameter = value
+    const searchAutoComplite = (inputs) => {
+        console.log(inputs)
         axios
-            .get(`https://pocketmedic.online/compare/drugs_search?drug=` + searchGetParameter)
+            .get(`https://pocketmedic.online/compare/drugs_search?drug=` + inputs)
             .then(response => {
-                const compares = response.data.drug_main_name
-                console.log('auto', compares)
-                // setAutoComplite(Object.values(compares))
-            })
+                const compares = response.data.mnn_1
+                setAutoComplite(Object.values(compares))
+            }).catch(error => console.log('autoComplite error', error))
     }
     return (
         <Layout>
@@ -293,9 +290,17 @@ const Interactions = () => {
                                 <Box className={classes.activePart__inputBox}>
                                     {inputs.map((item, index) => (
                                         <Box className={classes.activePart__inputBox_item} key={index}>
+                                            <Autocomplete
+                                                id="free-solo-demo"
+                                                freeSolo
+                                                options={AutoCompliteList}
+                                                className={classes.activePart__input}
 
-                                            <TextField id="outlined-basic" label="Введите лекарство" variant="outlined" className={classes.activePart__input} value={item.value} onChange={handleText(item.id)} />
-
+                                                onInputChange={(event, newInputValue) => handleAutoComplite(item.id, newInputValue)}
+                                                renderInput={(params) => (
+                                                    <TextField  {...params} id="outlined-basic" label="Введите лекарство" variant="outlined" value={item.value} onChange={handleText(item.id)} />
+                                                )}
+                                            />
                                             <Button variant="contained" className={classes.activePart__cancelButton} onClick={() => { handleDelete(item.id) }}>x</Button>
                                         </Box>
                                     ))}
@@ -314,7 +319,7 @@ const Interactions = () => {
 
                                     {effect ? effect.map((item, index) => (
                                         <div key={index}>
-                                            <span style={{ fontWeight: 'bold' }}>{item.drug_1}</span> и <span style={{ fontWeight: 'bold' }}>{item.drug_2}</span> взаимодействуют: <span style={{ backgroundColor: `${Object.values(item.color)}`, width: 15, height: 20, margin: 5, border: '1px solid black', color: `${Object.values(item.color)}` }}>az</span> {Object.values(item.effect)}
+                                            <span style={{ fontWeight: 'bold' }}>{item.drug_1}</span> и <span style={{ fontWeight: 'bold' }}>{item.drug_2}</span> взаимодействуют: <span style={{ backgroundColor: `${item.effect !== 'not effect' ? Object.values(item.color) : 'grey'}`, width: 15, height: 20, margin: 5, border: '1px solid black', color: `${item.effect !== 'not effect' ? Object.values(item.color) : 'grey'}` }}>az</span> {Object.values(item.effect)}
                                         </div>
                                     )) : 'нету эффектов'}
                                 </Box>
