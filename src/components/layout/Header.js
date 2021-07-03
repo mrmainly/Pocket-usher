@@ -23,7 +23,7 @@ const headersData = [
     },
     {
         label: "О приложении",
-        href: "/about",
+        href: "/application",
     },
     {
         label: "Блог",

@@ -14,13 +14,13 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" component={HomePage} exact />
-        <Route path="/about" component={About} />
+        <Route path="/application" component={About} />
         <Route path="/team" component={Team} />
         <Route path="/blog" component={Blog} />
         <Route path="/faq" component={Faq} />
         <Route path="/interactions" component={Interactions} />
         <Route path="/auth" component={Auth} />
-        <Route path="/privacy-policy" component={PrivacyPolicyPage} />
+        <Route path="/about/privacy" component={PrivacyPolicyPage} />
       </Switch>
     </Router>
   );

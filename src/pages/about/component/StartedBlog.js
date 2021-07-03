@@ -70,7 +70,7 @@ const StartedBlog = () => {
                                 <ButtonCustom text={'Узнать подробнее'} />
                             </Box>
                             <Box style={{ marginTop: 20, marginBottom: 50 }}>
-                                <ButtonCustom text="политика конфедициальности" onClick={() => { history.push('/privacy-policy') }} />
+                                <ButtonCustom text="политика конфедициальности" onClick={() => { history.push('/about/privacy/') }} />
                             </Box>
                         </Box>
                     </Grid>
