@@ -7,6 +7,7 @@ import Interactions from './pages/interactions/index'
 import Faq from './pages/faq/index'
 import Auth from './pages/auth/index'
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import PrivacyPolicyPage from './pages/privacyPolicy/privacyPolicyPage';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/faq" component={Faq} />
         <Route path="/interactions" component={Interactions} />
         <Route path="/auth" component={Auth} />
+        <Route path="/privacy-policy" component={PrivacyPolicyPage} />
       </Switch>
     </Router>
   );

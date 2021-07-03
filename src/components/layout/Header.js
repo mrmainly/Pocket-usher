@@ -37,6 +37,10 @@ const headersData = [
         label: "Команда",
         href: "/team",
     },
+    {
+        label: "политика конфедициальности",
+        href: "/privacy-policy",
+    },
 ];
 const useStyles = makeStyles(() => ({
     header: {
