@@ -3,6 +3,8 @@ import { Container, Typography, Box, Grid } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import ButtonCustom from '../../../components/ButtonCustom'
 
+import { useHistory } from 'react-router-dom'
+
 const useStyles = makeStyles((theme) => ({
     container: {
         backgroundImage: `url(${"/image/Element/Elenent_fon.png"})`,
@@ -40,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         [theme.breakpoints.down('sm')]: {
             marginTop: 0,
-            marginBottom: 0
+            marginBottom: '-40px'
         },
     },
     button_box: {
@@ -54,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 const StartedBlog = () => {
     const classes = useStyles()
+    const history = useHistory()
     return (
         <div className={classes.container}>
             <Container>
@@ -65,6 +68,9 @@ const StartedBlog = () => {
                             <Box className={classes.button_box}>
                                 <ButtonCustom text={'Установить'} />
                                 <ButtonCustom text={'Узнать подробнее'} />
+                            </Box>
+                            <Box style={{ marginTop: 20, marginBottom: 50 }}>
+                                <ButtonCustom text="политика конфедициальности" onClick={() => { history.push('/privacy-policy') }} />
                             </Box>
                         </Box>
                     </Grid>
