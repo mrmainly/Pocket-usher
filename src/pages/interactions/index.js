@@ -1,5 +1,5 @@
-import React, { useReducer, useState, useEffect } from 'react';
-import { Box, TextField, Typography, Container, Grid, Button, TextareaAutosize, colors } from "@material-ui/core";
+import React, { useState } from 'react';
+import { Box, TextField, Typography, Container, Grid, Button } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from "react-router-dom";
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -28,7 +28,13 @@ const useClasses = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%'
+        width: '100%',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center'
+        },
     },
     activePart: {
         display: 'flex',
@@ -49,7 +55,10 @@ const useClasses = makeStyles(theme => ({
         alignItems: 'center',
         flexDirection: 'row',
         marginTop: 10,
-        width: '80%'
+        width: '80%',
+        [theme.breakpoints.down('sm')]: {
+            width: '100%'
+        },
     },
     activePart__cancelButton: {
         display: 'flex',
@@ -144,10 +153,20 @@ const useClasses = makeStyles(theme => ({
         marginTop: 5,
         borderTop: '1px solid #b9b9b9',
         width: '100%',
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: 'column',
+
+        },
     },
     InfoBLock_label: {
         width: 100,
         marginRight: 5,
+    },
+    buttonBox: {
+        [theme.breakpoints.down('sm')]: {
+            marginTop: 10,
+            marginBottom: 10
+        },
     }
 }))
 
@@ -157,12 +176,8 @@ const Interactions = () => {
 
     let [idCounter, setIdCounter] = useState(1)
     const [effect, setEffect] = useState([])
-    const [mnn1, setMnn1] = useState('')
-    const [mnn2, setMnn2] = useState('')
-    const [color, setColor] = useState()
     const [showModal, setShowModal] = useState(false)
     const [AutoCompliteList, setAutoComplite] = useState([])
-    const spanCustom = document.createElement('span')
 
     const [inputs, setInputs] = useState([
         {
@@ -227,19 +242,14 @@ const Interactions = () => {
             .get(`https://pocketmedic.online/compare/drugs_mnn?` + getParams)
             .then(response => {
                 const compares = response.data
-                compares.map((compare) => {
-                    if (compare.effect !== 'not effect') {
-                        // setColor(Object.values(compare.color))
-                        // return `${compare.drug_1} и ${compare.drug_2} взаимодействуют: ${Object.values(compare.effect)} \n`
-                        // setMnn2(compare.drug_2)
-                        // setMnn1(compare.drug_1)
-                        // setEffect(Object.values(compare.effect))
-                        console.log(response.data)
-                        setEffect(response.data)
-                    } else {
-                        setShowModal(true)
-                    }
+                let status = compares.some((item) => {
+                    return item.effect !== 'not effect'
                 })
+                if (status) {
+                    setEffect(response.data)
+                } else {
+                    setShowModal(true)
+                }
             }).catch((error) => {
                 console.log('error', error)
             })
@@ -271,7 +281,7 @@ const Interactions = () => {
         axios
             .get(`https://pocketmedic.online/compare/drugs_search?drug=` + inputs)
             .then(response => {
-                const compares = response.data.mnn_1
+                const compares = response.data
                 setAutoComplite(Object.values(compares))
             }).catch(error => console.log('autoComplite error', error))
     }
@@ -282,7 +292,9 @@ const Interactions = () => {
                     <Box className={classes.content}>
                         <Box className={classes.titleBox}>
                             <Typography variant="h5">Проверка взаимодействия лекарственных средств</Typography>
-                            <ButtonCustom text="Вопрос ответ" onClick={() => { history.push("/faq") }} />
+                            <Box className={classes.buttonBox}>
+                                <ButtonCustom text="Вопрос ответ" onClick={() => { history.push("/faq") }} />
+                            </Box>
                         </Box>
                         <Grid container className={classes.interactionBox}>
                             <Grid item lg={6} sm={12} md={6} xl={6} xs={12} className={classes.activePart}>
@@ -295,13 +307,14 @@ const Interactions = () => {
                                                 freeSolo
                                                 options={AutoCompliteList}
                                                 className={classes.activePart__input}
-
                                                 onInputChange={(event, newInputValue) => handleAutoComplite(item.id, newInputValue)}
                                                 renderInput={(params) => (
                                                     <TextField  {...params} id="outlined-basic" label="Введите лекарство" variant="outlined" value={item.value} onChange={handleText(item.id)} />
                                                 )}
                                             />
-                                            <Button variant="contained" className={classes.activePart__cancelButton} onClick={() => { handleDelete(item.id) }}>x</Button>
+                                            {item.close == false ? <Box style={{ width: 80, height: 56 }}></Box> :
+                                                <Button variant="contained" className={classes.activePart__cancelButton} onClick={() => { handleDelete(item.id) }}>x</Button>
+                                            }
                                         </Box>
                                     ))}
                                 </Box>
@@ -316,10 +329,9 @@ const Interactions = () => {
                                 </Box>
                                 <Box className={classes.interactionsContent}>
                                     {/* <Box>{effect !== 'нету эффектов' ? mnn1 + ' и ' + mnn2 + ' взаимодействуют: ' : ''} {effect !== 'нету эффектов' ? colorBox() : ''}{effect}</Box> */}
-
                                     {effect ? effect.map((item, index) => (
                                         <div key={index}>
-                                            <span style={{ fontWeight: 'bold' }}>{item.drug_1}</span> и <span style={{ fontWeight: 'bold' }}>{item.drug_2}</span> взаимодействуют: <span style={{ backgroundColor: `${item.effect !== 'not effect' ? Object.values(item.color) : 'grey'}`, width: 15, height: 20, margin: 5, border: '1px solid black', color: `${item.effect !== 'not effect' ? Object.values(item.color) : 'grey'}` }}>az</span> {Object.values(item.effect)}
+                                            <span style={{ fontWeight: 'bold' }}>{item.drug_1}</span> и <span style={{ fontWeight: 'bold' }}>{item.drug_2}</span> взаимодействуют: <span style={{ backgroundColor: `${item.effect !== 'not effect' ? item.color : 'grey'}`, width: 15, height: 20, margin: 5, border: '1px solid black', color: `${item.effect !== 'not effect' ? item.color : 'grey'}` }}>__</span> {Object.values(item.effect)}
                                         </div>
                                     )) : 'нету эффектов'}
                                 </Box>
@@ -342,7 +354,6 @@ const Interactions = () => {
                 </Container>
                 <Box style={{ margin: '0 auto' }}>
                     <SimpleModal showModal={showModal} setShowModal={setShowModal} />
-
                 </Box>
             </div>
         </Layout >

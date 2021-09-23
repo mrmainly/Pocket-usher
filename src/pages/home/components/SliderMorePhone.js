@@ -18,12 +18,12 @@ const useStyles = makeStyles((theme) => ({
         width: '50%',
         margin: '0 auto',
         [theme.breakpoints.down('sm')]: {
-            width: '100%'
+            width: '100%',
+            paddingTop: 100
         },
     },
     sliderBlock: {
-        margin: '0 auto',
-        height: 1600
+        height: 1600,
     }
 }));
 
@@ -33,14 +33,14 @@ const SliderMorePhone = ({ title }) => {
 
     return (
         <div className={classes.container}>
-            <Box className={classes.sliderBlock}>
-                <Grid className={classes.title_block}>
-                    <Typography variant="h3"> {title}</Typography>
-                </Grid>
-                <div>
+            <Container style={{ margin: '0 auto' }}>
+                <Box className={classes.sliderBlock}>
+                    <Grid className={classes.title_block}>
+                        <Typography variant="h3"> {title}</Typography>
+                    </Grid>
                     <CaruselCustom />
-                </div>
-            </Box>
+                </Box>
+            </Container>
         </div >
     )
 }

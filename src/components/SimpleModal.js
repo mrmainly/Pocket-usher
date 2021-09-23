@@ -74,7 +74,6 @@ export default function SimpleModal({ showModal, setShowModal }) {
 
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <SimpleModal />
             <Box className={classes.cardsBox}>
                 В данной версии базы данных взаимодействий не найдено, но это не означает, что их достоверно нет. Согласуйте с инструкциями к препаратам!
             </Box>

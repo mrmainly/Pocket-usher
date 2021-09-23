@@ -11,27 +11,25 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'centet',
         alignItems: 'center',
-        height: 800,
-        marginLeft: '-100px',
-
+        backgroundColor: 'red',
+        height: 800
     },
     image: {
         opacity: '0.3',
         borderRadius: 30,
-        width: '60rem',
         marginTop: 85,
-
+        width: '60rem'
     },
     imageActive: {
         transform: 'scale(1.2)',
         opacity: 1,
         borderRadius: 30,
-        width: '60rem',
         marginBottom: 190,
+        width: '60rem'
     },
     text__blog: {
-        width: '60rem',
-        fontSize: 45
+        fontSize: 45,
+        width: '60rem'
     },
     btnBox: {
 
@@ -69,9 +67,7 @@ const CaruselCustom = () => {
         slidesToShow,
         slidesToScroll: 1,
         beforeChange: (current, next) => setImageIndex(next),
-        centerPadding: 0,
-
-
+        centerPadding: "0px",
     };
     const object = [
         {
@@ -113,23 +109,23 @@ const CaruselCustom = () => {
         },
     ]
     return (
-
-        <Slider {...settings}>
+        <Slider {...settings} style={{ margin: '0 auto' }}>
             {object.map((item, index) => (
-                <div className={classes.slide} key={index}>
-                    <div className={classes.center}>
-                        <img src={item.img} alt="..." className={item.id == imageIndex ? classes.imageActive : classes.image} />
-                        <div className={classes.text__blog}>
-                            <p>
-                                {item.description}
-                            </p>
+                <div key={index}>
+                    <div className={classes.slide}>
+                        <div className={classes.center}>
+                            <img src={item.img} alt="..." className={item.id == imageIndex ? classes.imageActive : classes.image} />
+                            <div className={classes.text__blog}>
+                                <p>
+                                    {item.description}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             ))
             }
         </Slider>
-
     )
 }
 

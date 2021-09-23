@@ -16,9 +16,22 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('sm')]: {
             height: 400,
             paddingBottom: 30,
-            paddingTop: 30
+            paddingTop: 30,
+            textAling: 'center'
         },
     },
+    buttonBox: {
+        [theme.breakpoints.down('md')]: {
+            marginTop: 10
+        },
+    },
+    title: {
+        fontSize: 55,
+        fontWeight: 'bold',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: 35
+        },
+    }
 }));
 
 const Greeting = () => {
@@ -26,11 +39,13 @@ const Greeting = () => {
     const classes = useStyles()
     return (
         <Box className={classes.container}>
-            <Typography variant="h3" style={{ fontFamily: 'serif', fontWeight: 'bold' }}>POCKET MEDIC</Typography>
+            <Typography className={classes.title}>POCKET MEDIC</Typography>
             <Grid item style={{ textAlign: 'center' }} lg={3} sm={4} md={3} xl={3} xs={8}>
-                <Typography style={{ fontSize: 16, marginTop: 50 }} variant="h6">Персональный медицинский Трекер. Следите за своим здоровьем и лечением ваших близких онлайн</Typography>
+                <Typography style={{ fontSize: 16, marginTop: 20 }} variant="h6">Персональный медицинский Трекер. Следите за своим здоровьем и лечением ваших близких онлайн</Typography>
             </Grid>
-            <ButtonCustom text={'Скачать приложение'} />
+            <Box className={classes.buttonBox}>
+                <ButtonCustom text={'Скачать приложение'} />
+            </Box>
         </Box >
     )
 }
